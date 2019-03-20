@@ -121,7 +121,11 @@ public class IntArrayWorker
     return Largest;
   }
   public int getColTotal(int col){
-    
+    int total=0;
+    for(int row=0; row<matrix.length; row++){
+      total = total+matrix[row][col];
+    }
+    return total;
   }
  
 }
