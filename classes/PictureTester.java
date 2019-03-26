@@ -119,6 +119,13 @@ public class PictureTester
       gull.mirrorGull();
       gull.explore();
   }
+  public static void testCopy2(){
+    Picture gull1 = new Picture("seagull.jpg");
+    Picture gull2 = new Picture("seagull.jpg");
+    gull1.explore();
+    gull2.copy2(new Picture(gull1,235,325,220,222 );
+    //gull.explore();
+  }
 
   
   /** Main method for testing.  Every class can have a main
@@ -142,10 +149,11 @@ public class PictureTester
     //testMirrorDiagonal();
     //testMirrorTemple();
     //testMirrorArms();
-    testMirrorGull();
+    //testMirrorGull();
     //testMirrorDiagonal();
     //testCollage();
     //testCopy();
+      testCopy2();
     //testEdgeDetection();
     //testEdgeDetection2();
     //testChromakey();
