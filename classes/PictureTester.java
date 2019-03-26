@@ -87,9 +87,9 @@ public class PictureTester
   public static void testMirrorTemple()
   {
     Picture temple = new Picture("temple.jpg");
-    temple.explore();
-    temple.mirrorTemple();
-    temple.explore();
+    //temple.explore();
+    System.out.println(temple.mirrorTemple());
+    //temple.explore();
   }
   
   /** Method to test the collage method */
@@ -121,12 +121,20 @@ public class PictureTester
   }
   public static void testCopy2(){
     Picture gull1 = new Picture("seagull.jpg");
-    Picture gull2 = new Picture("seagull.jpg");
     gull1.explore();
-    gull2.copy2(new Picture(gull1,235,325,220,222 );
-    //gull.explore();
+    gull1.copy2(gull1,231,325,216,367,0,0 );
+    gull1.explore();
   }
+  public static void testMyCollage()
+  {
+    Picture canvas = new Picture("640x480.jpg");
+    canvas.myCollage();
+    canvas.explore();
 
+    //Picture flower = new Picture("flower1.jpg");
+    //flower.explore();
+
+  }
   
   /** Main method for testing.  Every class can have a main
     * method in Java */
@@ -152,8 +160,9 @@ public class PictureTester
     //testMirrorGull();
     //testMirrorDiagonal();
     //testCollage();
+    testMyCollage();
     //testCopy();
-      testCopy2();
+    //testCopy2();
     //testEdgeDetection();
     //testEdgeDetection2();
     //testChromakey();

@@ -269,6 +269,7 @@ public class Picture extends SimplePicture
     }
     return count;
   }
+
   public void mirrorArms(){
       int mirrorPoint = 195;
       Pixel leftPixel = null;
@@ -345,19 +346,19 @@ public class Picture extends SimplePicture
     }   
   }
 
-  public void copy2(Picture fromPic, int startRow, int endRow, int startCol, int endCol)
+  public void copy2(Picture fromPic, int fromStartRow, int fromEndRow, int fromStartCol, int fromEndCol, int toStartRow, int toStartCol)
   {
     Pixel fromPixel = null;
     Pixel toPixel = null;
     Pixel[][] toPixels = this.getPixels2D();
     Pixel[][] fromPixels = fromPic.getPixels2D();
-    for (int fromRow = startRow, toRow = 0;
-         fromRow < endRow &&
+    for (int fromRow = fromStartRow, toRow = toStartRow;
+         fromRow < fromEndRow &&
                  toRow < toPixels.length;
          fromRow++, toRow++)
     {
-      for (int fromCol = startCol, toCol = 0;
-           fromCol < endCol &&
+      for (int fromCol = fromStartCol, toCol = toStartCol;
+           fromCol < fromEndCol &&
                    toCol < toPixels[0].length;
            fromCol++, toCol++)
       {
@@ -382,6 +383,24 @@ public class Picture extends SimplePicture
     this.copy(flower2,500,0);
     this.mirrorVertical();
     this.write("collage.jpg");
+  }
+  public void myCollage(){
+    Picture whiteFlower = new Picture("whiteFlower.jpg");
+    Picture gull = new Picture("seagull.jpg");
+    gull.negate();
+    Picture gull2 = new Picture("seagull.jpg");
+    gull2.zeroBlue();
+    this.copy(whiteFlower,0,0);
+    this.copy2(gull, 231,325,216,358,0,0);
+    this.copy2(gull2, 231,325,216,358,120,0);
+    Picture swan = new Picture("swan.jpg");
+    swan.grayScale();
+    this.copy2(swan, 70,260,200,390,295,0);
+    Picture flower = new Picture("flower1.jpg");
+    flower.keepOnlyBlue();
+    this.copy2(flower, 0,100,0,100,72,165);
+    this.mirrorVertical();
+    this.write("collage2.jpg");
   }
   
   
