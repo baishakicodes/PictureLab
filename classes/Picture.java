@@ -464,7 +464,7 @@ public class Picture extends SimplePicture
   }
   public int[] getAverageForColumn(int col){
     Pixel[][] pixels = this.getPixels2D();
-    int[] average= new int[pixels.length];
+    int[] average= new int[pixels[col].length];
     for(int row=0; row<pixels.length; row++){
       average[row]= (pixels[row][col].getBlue()+pixels[row][col].getRed()+pixels[row][col].getGreen())/3;
     }
