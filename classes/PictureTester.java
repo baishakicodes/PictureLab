@@ -125,6 +125,7 @@ public class PictureTester
     gull1.copy2(gull1,231,325,216,367,0,0 );
     gull1.explore();
   }
+
   public static void testMyCollage()
   {
     Picture canvas = new Picture("640x480.jpg");

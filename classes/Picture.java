@@ -384,6 +384,7 @@ public class Picture extends SimplePicture
     this.mirrorVertical();
     this.write("collage.jpg");
   }
+
   public void myCollage(){
     Picture whiteFlower = new Picture("whiteFlower.jpg");
     Picture gull = new Picture("seagull.jpg");
@@ -429,7 +430,46 @@ public class Picture extends SimplePicture
       }
     }
   }
-  
+
+  public int getCountRedOverValues(int value){
+    int count=0;
+    Pixel[][] pixels = this.getPixels2D();
+    for(int row=0; row<pixels.length; row++){
+      for(int col =0; col<pixels[0].length; col++){
+        if(pixels[row][col].getRed()>value){
+          count++;
+        }
+      }
+    }
+    return count;
+  }
+
+  public void setRedToHalfinTopHalf(){
+    Pixel[][] pixels = this.getPixels2D();
+    for(int row=0; row<(pixels.length)/2; row++){
+      for(int col =0; col<pixels[0].length; col++){
+        pixels[row][col].setRed((pixels[row][col].getRed())/2);
+      }
+    }
+  }
+  public void clearBlueOverValue(int value){
+    Pixel[][] pixels = this.getPixels2D();
+    for(int row=0; row<(pixels.length)/2; row++){
+      for(int col =0; col<pixels[0].length; col++){
+        if(pixels[row][col].getBlue()>value){
+          pixels[row][col].setBlue(0);
+        }
+      }
+    }
+  }
+  public int[] getAverageForColumn(int col){
+    Pixel[][] pixels = this.getPixels2D();
+    int[] average= new int[pixels.length];
+    for(int row=0; row<pixels.length; row++){
+      average[row]= (pixels[row][col].getBlue()+pixels[row][col].getRed()+pixels[row][col].getGreen())/3;
+    }
+    return average;
+  }
   
   /* Main method for testing - each class in Java can have a main 
    * method 
